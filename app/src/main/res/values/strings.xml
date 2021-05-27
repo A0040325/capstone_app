@@ -16,4 +16,9 @@
     <string name="tolak">Tolak</string>
     <string name="refresh">Refresh</string>
     <string name="location_icon">Location Icon</string>
+    <string name="nama">Nama</string>
+    <string name="alamat">Alamat</string>
+    <string name="no_telp">No Telp</string>
+    <string name="titik_koordinat">Titik Koordinat</string>
+    <string name="call">Call</string>
 </resources>

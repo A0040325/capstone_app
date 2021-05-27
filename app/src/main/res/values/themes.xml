@@ -13,4 +13,12 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="detailText">
+        <item name="fontFamily">@font/futura_hv_font</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:textSize">15dp</item>
+    </style>
 </resources>
