@@ -10,4 +10,10 @@
     <string name="rewrite_password">Rewrite Password</string>
     <string name="school">School</string>
     <string name="parenting">Parenting</string>
+    <string name="pemukulan">Pemukulan</string>
+    <string name="image_violence">Image Violence</string>
+    <string name="terima">Terima</string>
+    <string name="tolak">Tolak</string>
+    <string name="refresh">Refresh</string>
+    <string name="location_icon">Location Icon</string>
 </resources>
