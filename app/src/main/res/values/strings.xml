@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Capstone</string>
+    <string name="logo">Logo</string>
+    <string name="username_e_mail">Username/e-mail</string>
+    <string name="password">Password</string>
+    <string name="nama">Nama</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="rewrite_password">Rewrite Password</string>
+    <string name="school">School</string>
+    <string name="parenting">Parenting</string>
+</resources>

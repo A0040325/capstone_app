@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/tv_userfor"
+        android:layout_width="216dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/futura_hv_font"
+        android:textColor="@color/black"
+        android:textSize="40sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Use For ?" />
+
+    <ImageButton
+        android:id="@+id/ib_parenting"
+        android:layout_width="167dp"
+        android:layout_height="122dp"
+        android:layout_marginStart="120dp"
+        android:background="@drawable/parenting"
+        android:contentDescription="@string/parenting"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_school" />
+
+    <TextView
+        android:id="@+id/tv_school"
+        android:layout_width="167dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="120dp"
+        android:fontFamily="@font/futura_hv_font"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ib_school"
+        tools:text="@string/school" />
+
+    <ImageButton
+        android:id="@+id/ib_school"
+        android:layout_width="167dp"
+        android:layout_height="122dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="88dp"
+        android:background="@drawable/school"
+        android:contentDescription="@string/school"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_userfor" />
+
+    <TextView
+        android:id="@+id/tv_parenting"
+        android:layout_width="167dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="120dp"
+        android:fontFamily="@font/futura_hv_font"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ib_parenting"
+        tools:text="Parenting" />
+</androidx.constraintlayout.widget.ConstraintLayout>
