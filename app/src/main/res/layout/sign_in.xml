@@ -84,7 +84,6 @@
         android:layout_height="28dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="196dp"
-        android:background="#null"
         android:fontFamily="@font/futura_hv_font"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"

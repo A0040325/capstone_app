@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    tools:context=".view.DetailFragment"
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -140,6 +141,15 @@
                 app:layout_constraintBaseline_toBaselineOf="@id/text_coord"
                 app:layout_constraintStart_toStartOf="@id/guideline_right"
                 tools:text="21.17589279, -10.582987982" />
+
+            <fragment
+                android:id="@+id/detail_map"
+                class="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/guideline_bottom" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
