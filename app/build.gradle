@@ -1,8 +1,10 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
     id 'com.google.secrets_gradle_plugin' version '0.5'
     id 'com.google.gms.google-services'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -51,6 +53,11 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.4.3"
+
+    //HILT
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
 
     //MAPS
     implementation 'com.google.android.gms:play-services-maps:17.0.1'
@@ -63,6 +70,7 @@ dependencies {
 
     //Firebase
     implementation platform('com.google.firebase:firebase-bom:28.0.1')
+    implementation 'com.google.firebase:firebase-common-ktx'
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'com.google.firebase:firebase-auth-ktx'
 }

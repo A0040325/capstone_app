@@ -2,10 +2,18 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/detailFragment">
+    app:startDestination="@id/listAccidentFragment">
 
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.capstone.view.DetailFragment"
         android:label="DetailFragment" />
+    <fragment
+        android:id="@+id/listAccidentFragment"
+        android:name="com.example.capstone.view.ListAccidentFragment"
+        android:label="ListAccidentFragment" >
+        <action
+            android:id="@+id/action_listAccidentFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
 </navigation>
