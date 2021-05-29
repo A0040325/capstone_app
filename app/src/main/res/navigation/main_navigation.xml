@@ -7,7 +7,11 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.capstone.view.DetailFragment"
-        android:label="DetailFragment" />
+        android:label="DetailFragment" >
+        <argument
+            android:name="data"
+            app:argType="com.example.capstone.model.AccidentParcelable" />
+    </fragment>
     <fragment
         android:id="@+id/listAccidentFragment"
         android:name="com.example.capstone.view.ListAccidentFragment"

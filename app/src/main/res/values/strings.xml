@@ -20,4 +20,5 @@
     <string name="no_telp">No Telp</string>
     <string name="titik_koordinat">Titik Koordinat</string>
     <string name="call">Call</string>
+    <string name="coordinate">%2$f , %2$f</string>
 </resources>

@@ -1,8 +1,10 @@
 package com.example.capstone
 
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.capstone.databinding.ItemListAccidentBinding
 import com.example.capstone.model.AccidentDetail
 
@@ -49,9 +51,25 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
         }
 
         fun bind(item: AccidentDetail, onItemClick: IOnItemClick) {
-            binding.itemCoord.text =
-                "${item.coordinate.latitude}, ${item.coordinate.longitude}"
+            binding.itemCoord.text = binding.root.context.getString(
+                R.string.coordinate,
+                item.coordinate.latitude,
+                item.coordinate.longitude
+            )
             binding.itemTitle.text = item.user
+
+            try {
+                Glide.with(binding.root.context)
+                    .asBitmap()
+                    .load(Base64.decode(item.photo, Base64.DEFAULT))
+                    .into(binding.itemImage)
+            } catch (e: Exception) {
+
+            }
+
+            binding.root.setOnClickListener {
+                onItemClick.onItemClick(item)
+            }
         }
     }
 

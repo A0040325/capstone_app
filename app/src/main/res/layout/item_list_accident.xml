@@ -58,22 +58,7 @@
         android:background="@drawable/rounded_accepted"
         android:text="@string/terima"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@id/item_decBtn"
-        app:layout_constraintStart_toEndOf="@id/item_image"
-        app:layout_constraintTop_toBottomOf="@id/item_coord" />
-
-    <Button
-        android:id="@+id/item_decBtn"
-        android:layout_width="80dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_declined"
-        android:text="@string/tolak"
-        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/item_accBtn"
         app:layout_constraintTop_toBottomOf="@id/item_coord" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

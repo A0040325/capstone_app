@@ -2,6 +2,7 @@ package com.example.capstone.repository
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -24,18 +25,18 @@ class AuthRepository @Inject constructor(private val auth: FirebaseAuth) {
                 if (task.isSuccessful) {
                     currentUser = auth.currentUser
                 }
-            }
+            }.await()
 
         return currentUser != null
     }
 
-    fun signIn(email: String, pass: String): Boolean {
+    suspend fun signIn(email: String, pass: String): Boolean {
         auth.signInWithEmailAndPassword(email, pass)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     currentUser = auth.currentUser
                 }
-            }
+            }.await()
 
         return currentUser != null
     }

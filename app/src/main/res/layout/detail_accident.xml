@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    tools:context=".view.DetailFragment"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".view.DetailFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -18,13 +18,14 @@
             android:layout_height="wrap_content"
             android:background="@color/primary_toolbar"
             app:title="Violence Detected"
-            app:titleTextColor="@color/white" />
+            app:titleTextColor="@color/black" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="55dp"
         android:fillViewport="true"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
@@ -146,7 +147,7 @@
                 android:id="@+id/detail_map"
                 class="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="250dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/guideline_bottom" />
 
@@ -156,8 +157,9 @@
     </androidx.core.widget.NestedScrollView>
 
     <Button
+        android:id="@+id/call_btn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_gravity="bottom"
         android:background="@color/declined"
         android:text="@string/call"
