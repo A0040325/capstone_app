@@ -21,4 +21,6 @@
     <string name="titik_koordinat">Titik Koordinat</string>
     <string name="call">Call</string>
     <string name="coordinate">%2$f , %2$f</string>
+    <string name="jaga_bersama">Jaga Bersama</string>
+    <string name="created_by_adhikana_waksa">Created by Adhikana Waksa</string>
 </resources>

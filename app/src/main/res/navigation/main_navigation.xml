@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/listAccidentFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/detailFragment"
@@ -19,5 +19,13 @@
         <action
             android:id="@+id/action_listAccidentFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.capstone.view.SplashFragment"
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_listAccidentFragment"
+            app:destination="@id/listAccidentFragment" />
     </fragment>
 </navigation>
