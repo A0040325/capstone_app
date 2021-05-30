@@ -61,4 +61,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/item_coord" />
 
+    <Button
+        android:id="@+id/item_resolvBtn"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_accepted"
+        android:text="@string/selesai"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@id/item_cancelBtn"
+        app:layout_constraintStart_toEndOf="@id/item_image"
+        app:layout_constraintTop_toBottomOf="@id/item_coord" />
+
+    <Button
+        android:id="@+id/item_cancelBtn"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_declined"
+        android:text="@string/cancel"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/item_resolvBtn"
+        app:layout_constraintTop_toBottomOf="@id/item_coord" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

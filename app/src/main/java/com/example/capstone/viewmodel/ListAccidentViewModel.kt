@@ -27,7 +27,7 @@ class ListAccidentViewModel @Inject constructor(
     fun getData() {
         viewModelScope.launch(Dispatchers.IO) {
             loading.postValue(true)
-            val result = auth.currentUser?.email?.let { repository.getAcceptedData(it) }
+            val result = auth.currentUser?.uid?.let { repository.getAcceptedData(it) }
             result?.addAll(repository.getAllData())
 
             mutableData.postValue(result)
@@ -39,6 +39,24 @@ class ListAccidentViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             loading.postValue(true)
             auth.currentUser?.uid?.let { repository.setAccepted(accidentId, it) }
+            getData()
+            loading.postValue(false)
+        }
+    }
+
+    fun unsetAccepted(accidentId: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            loading.postValue(true)
+            repository.setAccepted(accidentId, "")
+            getData()
+            loading.postValue(false)
+        }
+    }
+
+    fun setResolved(accidentId: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            loading.postValue(true)
+            repository.setResolved(accidentId)
             getData()
             loading.postValue(false)
         }

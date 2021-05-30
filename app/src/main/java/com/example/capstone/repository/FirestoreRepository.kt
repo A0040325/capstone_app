@@ -57,6 +57,7 @@ class FirestoreRepository @Inject constructor(
                 .addOnSuccessListener { result ->
                     for (document in result) {
                         val data: AccidentDetail = document.toObject(AccidentDetail::class.java)
+                        data.isAccepted = false
                         data.accidentId = document.id
                         resultData.add(data)
                     }

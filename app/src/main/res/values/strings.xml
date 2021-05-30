@@ -27,4 +27,6 @@
     <string name="sign_up">Sign Up</string>
     <string name="sign_in">Sign In</string>
     <string name="create_nyour_naccount">Create\nYour\nAccount</string>
+    <string name="selesai">Selesai</string>
+    <string name="cancel">Cancel</string>
 </resources>

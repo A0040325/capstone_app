@@ -11,5 +11,4 @@ data class AccidentParcelable(
     val photo: String,
     val latitude: Double,
     val longitude: Double,
-    var isAccepted: Boolean = false,
 ) : Parcelable

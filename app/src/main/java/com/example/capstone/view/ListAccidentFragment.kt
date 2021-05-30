@@ -43,12 +43,6 @@ class ListAccidentFragment : Fragment() {
         val fadeCircle = FadingCircle()
         progressBar.indeterminateDrawable = fadeCircle
 
-        adapter.setAcceptedClick(object : ListAdapter.IOnBtnClick {
-            override fun onBtnClicK(data: AccidentDetail) {
-                viewModel.setAccepted(data.accidentId)
-            }
-        })
-
         adapter.setItemClick(object : ListAdapter.IOnItemClick {
             override fun onItemClick(data: AccidentDetail) {
                 val sentData =
@@ -58,7 +52,7 @@ class ListAccidentFragment : Fragment() {
                         data.address,
                         data.photo,
                         data.coordinate.latitude,
-                        data.coordinate.longitude
+                        data.coordinate.longitude,
                     )
                 val toDetail =
                     ListAccidentFragmentDirections.actionListAccidentFragmentToDetailFragment(
@@ -66,6 +60,18 @@ class ListAccidentFragment : Fragment() {
                     )
 
                 binding.root.findNavController().navigate(toDetail)
+            }
+
+            override fun onAccBtnClick(data: AccidentDetail) {
+                viewModel.setAccepted(data.accidentId)
+            }
+
+            override fun onResolvBtnClick(data: AccidentDetail) {
+                viewModel.setResolved(data.accidentId)
+            }
+
+            override fun onCancelBtnClick(data: AccidentDetail) {
+                viewModel.unsetAccepted(data.accidentId)
             }
         })
 
