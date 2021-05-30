@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -31,6 +32,7 @@ class AuthRepository @Inject constructor(
             currentUser = auth.currentUser
         }
 
+        notifSubscribe()
         return currentUser != null
     }
 
@@ -51,6 +53,7 @@ class AuthRepository @Inject constructor(
         }
 
         currentUser = auth.currentUser
+        notifSubscribe()
 
         try {
             currentUser?.let {
@@ -72,6 +75,18 @@ class AuthRepository @Inject constructor(
         userDetail = tempData?.toObject(UserDetail::class.java)
     }
 
+    private fun notifSubscribe() {
+        FirebaseMessaging.getInstance().subscribeToTopic("violence")
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d("HEHE", "Subscirbed")
+                }
+            }
+            .addOnFailureListener { e ->
+                Log.d("HEHE", e.toString())
+            }
+    }
+
     suspend fun signIn(email: String, pass: String, context: Context): Boolean {
         try {
             auth.signInWithEmailAndPassword(email, pass).await()
@@ -83,6 +98,7 @@ class AuthRepository @Inject constructor(
         }
 
         currentUser = auth.currentUser
+        notifSubscribe()
         CoroutineScope(Dispatchers.IO).launch {
             getUserDetail()
         }
