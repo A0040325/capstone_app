@@ -4,7 +4,7 @@ import com.google.firebase.firestore.GeoPoint
 
 data class AccidentDetail(
     val user: String = "",
-    val phone: Number = 0,
+    val phone: String = "",
     val address: String = "",
     val photo: String = "",
     val resolved_by: String = "",

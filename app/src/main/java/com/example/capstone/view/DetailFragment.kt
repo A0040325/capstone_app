@@ -47,7 +47,7 @@ class DetailFragment : Fragment(), OnMapReadyCallback {
         val image = Base64.decode(data.photo, Base64.DEFAULT)
         binding.detailAlamat.text = data.address
         binding.detailName.text = data.user
-        binding.detailTelp.text = data.phone.toString()
+        binding.detailTelp.text = data.phone
         binding.detailCoord.text = getString(R.string.coordinate, data.latitude, data.longitude)
 
         Glide.with(requireContext())

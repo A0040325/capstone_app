@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class AccidentParcelable(
     val user: String,
-    val phone: Number,
+    val phone: String,
     val address: String,
     val photo: String,
     val latitude: Double,
