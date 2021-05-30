@@ -7,5 +7,8 @@ data class AccidentDetail(
     val phone: Number = 0,
     val address: String = "",
     val photo: String = "",
+    val resolved_by: String = "",
+    var isAccepted: Boolean = false,
+    var accidentId: String = "",
     val coordinate: GeoPoint = GeoPoint(0.0, 0.0)
 )

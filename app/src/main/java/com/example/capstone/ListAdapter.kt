@@ -17,9 +17,15 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
         }
 
     private lateinit var onItemClick: IOnItemClick
+    private lateinit var onAcceptedClick: IOnBtnClick
+    //private lateinit var onResolvedClick: IOnBtnClick
 
     fun setItemClick(onItemClick: IOnItemClick) {
         this.onItemClick = onItemClick
+    }
+
+    fun setAcceptedClick(onBtnClick: IOnBtnClick) {
+        this.onAcceptedClick = onBtnClick
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,7 +33,7 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(data[position], onItemClick)
+        holder.bind(data[position], onItemClick, onAcceptedClick)
     }
 
     override fun getItemCount(): Int {
@@ -50,7 +56,7 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
             }
         }
 
-        fun bind(item: AccidentDetail, onItemClick: IOnItemClick) {
+        fun bind(item: AccidentDetail, onItemClick: IOnItemClick, onBtnClick: IOnBtnClick) {
             binding.itemCoord.text = binding.root.context.getString(
                 R.string.coordinate,
                 item.coordinate.latitude,
@@ -67,6 +73,10 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 
             }
 
+            binding.itemAccBtn.setOnClickListener {
+                onBtnClick.onBtnClicK(item)
+            }
+
             binding.root.setOnClickListener {
                 onItemClick.onItemClick(item)
             }
@@ -75,5 +85,9 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 
     interface IOnItemClick {
         fun onItemClick(data: AccidentDetail)
+    }
+
+    interface IOnBtnClick {
+        fun onBtnClicK(data: AccidentDetail)
     }
 }

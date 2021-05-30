@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
@@ -13,6 +14,7 @@ import com.example.capstone.databinding.ListAccidentBinding
 import com.example.capstone.model.AccidentDetail
 import com.example.capstone.model.AccidentParcelable
 import com.example.capstone.viewmodel.ListAccidentViewModel
+import com.github.ybq.android.spinkit.style.FadingCircle
 
 class ListAccidentFragment : Fragment() {
     private var _binding: ListAccidentBinding? = null
@@ -37,6 +39,16 @@ class ListAccidentFragment : Fragment() {
         binding.listUserRecycler.layoutManager = LinearLayoutManager(requireContext())
         binding.listUserRecycler.adapter = adapter
 
+        val progressBar: ProgressBar = binding?.spinKit as ProgressBar
+        val fadeCircle = FadingCircle()
+        progressBar.indeterminateDrawable = fadeCircle
+
+        adapter.setAcceptedClick(object : ListAdapter.IOnBtnClick {
+            override fun onBtnClicK(data: AccidentDetail) {
+                viewModel.setAccepted(data.accidentId)
+            }
+        })
+
         adapter.setItemClick(object : ListAdapter.IOnItemClick {
             override fun onItemClick(data: AccidentDetail) {
                 val sentData =
@@ -60,6 +72,21 @@ class ListAccidentFragment : Fragment() {
         viewModel.getData()
         viewModel.data.observe(viewLifecycleOwner, { data ->
             adapter.data = data
+            toggleLoading(false)
         })
+
+        viewModel.isLoading.observe(viewLifecycleOwner, { isLoading ->
+            if (isLoading) toggleLoading(true)
+        })
+    }
+
+    private fun toggleLoading(isLoading: Boolean) {
+        if (!isLoading) {
+            binding.spinKit.visibility = View.GONE
+            binding.listUserRecycler.visibility = View.VISIBLE
+        } else {
+            binding.spinKit.visibility = View.VISIBLE
+            binding.listUserRecycler.visibility = View.GONE
+        }
     }
 }

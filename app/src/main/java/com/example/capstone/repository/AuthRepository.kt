@@ -8,6 +8,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -41,27 +42,26 @@ class AuthRepository @Inject constructor(
         context: Context
     ): Boolean {
         try {
-            auth.createUserWithEmailAndPassword(email, pass)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        currentUser = auth.currentUser
-
-                        currentUser?.let {
-                            val data = hashMapOf(
-                                "phone" to phone,
-                                "username" to username
-                            )
-                            db.collection("user").document(it.uid).set(data)
-                                .addOnFailureListener { e -> Log.e("HEHE", "ERROR", e) }
-                        }
-                    }
-                }
-                .await()
+            auth.createUserWithEmailAndPassword(email, pass).await()
         } catch (e: FirebaseAuthException) {
             Log.d("HEHE", "ERROR", e)
             withContext(Dispatchers.Main) {
                 e.localizedMessage?.let { ToastHelper.showToast(it, context) }
             }
+        }
+
+        currentUser = auth.currentUser
+
+        try {
+            currentUser?.let {
+                val data = hashMapOf(
+                    "phone" to phone,
+                    "username" to username
+                )
+                db.collection("user").document(it.uid).set(data).await()
+            }
+        } catch (e: FirebaseFirestoreException) {
+            Log.d("HEHE", "ERROR", e)
         }
 
         return currentUser != null
@@ -74,16 +74,7 @@ class AuthRepository @Inject constructor(
 
     suspend fun signIn(email: String, pass: String, context: Context): Boolean {
         try {
-            auth.signInWithEmailAndPassword(email, pass)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        currentUser = auth.currentUser
-                        CoroutineScope(Dispatchers.IO).launch {
-                            getUserDetail()
-                        }
-                    }
-                }
-                .await()
+            auth.signInWithEmailAndPassword(email, pass).await()
         } catch (e: FirebaseAuthException) {
             Log.d("HEHE", "ERROR", e)
             withContext(Dispatchers.Main) {
@@ -91,6 +82,10 @@ class AuthRepository @Inject constructor(
             }
         }
 
+        currentUser = auth.currentUser
+        CoroutineScope(Dispatchers.IO).launch {
+            getUserDetail()
+        }
 
         return currentUser != null
     }
