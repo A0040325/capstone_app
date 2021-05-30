@@ -10,4 +10,5 @@
     <color name="primary_toolbar">#98DDCA</color>
     <color name="accepted">#4CAF50</color>
     <color name="declined">#F44336</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>

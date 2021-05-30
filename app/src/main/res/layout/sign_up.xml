@@ -14,12 +14,12 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="36dp"
         android:fontFamily="@font/futura_hv_font"
+        android:text="@string/create_nyour_naccount"
         android:textColor="@color/black"
         android:textSize="50sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Create Your Account" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_username"
@@ -60,7 +60,7 @@
         android:autofillHints="@string/phone_number"
         android:background="@drawable/border"
         android:hint="@string/phone_number"
-        android:inputType="number"
+        android:inputType="phone"
         android:paddingStart="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_email"
@@ -103,11 +103,11 @@
         android:layout_marginStart="44dp"
         android:layout_marginTop="52dp"
         android:fontFamily="@font/futura_hv_font"
+        android:text="@string/sign_up"
         android:textColor="@color/black"
         android:textSize="32sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_rwpassword"
-        tools:text="Sign Up" />
+        app:layout_constraintTop_toBottomOf="@+id/et_rwpassword" />
 
     <Button
         android:id="@+id/btn_nsignup"
@@ -118,6 +118,18 @@
         android:background="@mipmap/foward_round"
         app:layout_constraintStart_toEndOf="@+id/tv_signup"
         app:layout_constraintTop_toBottomOf="@+id/et_rwpassword" />
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/spinKit"
+        style="@style/SpinKitView.FadingCircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:SpinKit_Color="@color/teal_700"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_nsignup" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
