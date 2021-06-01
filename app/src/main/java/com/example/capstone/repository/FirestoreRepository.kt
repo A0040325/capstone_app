@@ -6,6 +6,7 @@ import com.example.capstone.helper.ToastHelper
 import com.example.capstone.model.AccidentDetail
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
@@ -36,6 +37,31 @@ class FirestoreRepository @Inject constructor(
                     }
                 }
                 .await()
+        } catch (e: FirebaseFirestoreException) {
+            Log.d("HEHE", e.code.toString())
+            withContext(Dispatchers.Main) {
+                ToastHelper.showToast(e.code.toString(), context)
+            }
+        }
+
+        return resultData
+    }
+
+    suspend fun getHistory(): ArrayList<AccidentDetail> {
+        val resultData = arrayListOf<AccidentDetail>()
+
+        try {
+            firestore.collection("data")
+                .whereEqualTo("resolved", true)
+                .get()
+                .addOnSuccessListener { result ->
+                    for (document in result) {
+                        val data: AccidentDetail = document.toObject(AccidentDetail::class.java)
+                        data.isAccepted = false
+                        data.accidentId = document.id
+                        resultData.add(data)
+                    }
+                }.await()
         } catch (e: FirebaseFirestoreException) {
             Log.d("HEHE", e.code.toString())
             withContext(Dispatchers.Main) {

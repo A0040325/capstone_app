@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.capstone.ListAdapter
+import com.example.capstone.LoadingHelper
 import com.example.capstone.databinding.ListAccidentBinding
 import com.example.capstone.model.AccidentDetail
 import com.example.capstone.model.AccidentParcelable
@@ -39,7 +40,7 @@ class ListAccidentFragment : Fragment() {
         binding.listUserRecycler.layoutManager = LinearLayoutManager(requireContext())
         binding.listUserRecycler.adapter = adapter
 
-        val progressBar: ProgressBar = binding?.spinKit as ProgressBar
+        val progressBar: ProgressBar = binding.spinKit as ProgressBar
         val fadeCircle = FadingCircle()
         progressBar.indeterminateDrawable = fadeCircle
 
@@ -78,21 +79,15 @@ class ListAccidentFragment : Fragment() {
         viewModel.getData()
         viewModel.data.observe(viewLifecycleOwner, { data ->
             adapter.data = data
-            toggleLoading(false)
+            LoadingHelper.toggleLoading(binding.spinKit, binding.listUserRecycler, false)
         })
 
         viewModel.isLoading.observe(viewLifecycleOwner, { isLoading ->
-            if (isLoading) toggleLoading(true)
+            if (isLoading) LoadingHelper.toggleLoading(
+                binding.spinKit,
+                binding.listUserRecycler,
+                true
+            )
         })
-    }
-
-    private fun toggleLoading(isLoading: Boolean) {
-        if (!isLoading) {
-            binding.spinKit.visibility = View.GONE
-            binding.listUserRecycler.visibility = View.VISIBLE
-        } else {
-            binding.spinKit.visibility = View.VISIBLE
-            binding.listUserRecycler.visibility = View.GONE
-        }
     }
 }
