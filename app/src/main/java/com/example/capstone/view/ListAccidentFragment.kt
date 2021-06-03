@@ -10,9 +10,9 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.capstone.ListAdapter
 import com.example.capstone.LoadingHelper
 import com.example.capstone.R
+import com.example.capstone.adapter.ListAdapter
 import com.example.capstone.databinding.ListAccidentBinding
 import com.example.capstone.model.AccidentDetail
 import com.example.capstone.model.AccidentParcelable
@@ -90,6 +90,12 @@ class ListAccidentFragment : Fragment() {
         viewModel.data.observe(viewLifecycleOwner, { data ->
             adapter.data = data
             LoadingHelper.toggleLoading(binding.spinKit, binding.listUserRecycler, false)
+
+            if (data.size == 0) {
+                binding.emptyData.root.visibility = View.VISIBLE
+            } else {
+                binding.emptyData.root.visibility = View.GONE
+            }
         })
 
         viewModel.isLoading.observe(viewLifecycleOwner, { isLoading ->

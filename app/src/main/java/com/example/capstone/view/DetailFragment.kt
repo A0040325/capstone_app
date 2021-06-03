@@ -8,7 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.example.capstone.R
 import com.example.capstone.databinding.DetailAccidentBinding
@@ -37,6 +39,10 @@ class DetailFragment : Fragment(), OnMapReadyCallback {
         val mapFragment: SupportMapFragment =
             childFragmentManager.findFragmentById(R.id.detail_map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        requireActivity().actionBar?.setDisplayHomeAsUpEnabled(true)
+        binding.listToolbar.setupWithNavController(findNavController())
+
         return binding.root
     }
 

@@ -1,4 +1,4 @@
-package com.example.capstone
+package com.example.capstone.adapter
 
 import android.util.Base64
 import android.view.LayoutInflater
@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.capstone.R
+import com.example.capstone.databinding.ItemHistoryAccidentBinding
 import com.example.capstone.databinding.ItemListAccidentBinding
 import com.example.capstone.model.AccidentDetail
 
-class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
+class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
 
     var data = ArrayList<AccidentDetail>()
         set(value) {
@@ -35,13 +37,13 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
         return data.size
     }
 
-    class ViewHolder private constructor(private val binding: ItemListAccidentBinding) :
+    class ViewHolder private constructor(private val binding: ItemHistoryAccidentBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val binding =
-                    ItemListAccidentBinding.inflate(
+                    ItemHistoryAccidentBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
                         false
@@ -71,29 +73,10 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
             binding.root.setOnClickListener {
                 onItemClick.onItemClick(item)
             }
-
-            binding.itemAccBtn.setOnClickListener { onItemClick.onAccBtnClick(item) }
-            binding.itemResolvBtn.setOnClickListener { onItemClick.onResolvBtnClick(item) }
-            binding.itemCancelBtn.setOnClickListener { onItemClick.onCancelBtnClick(item) }
-
-            if (item.isAccepted) {
-                binding.itemResolvBtn.visibility = View.VISIBLE
-                binding.itemCancelBtn.visibility = View.VISIBLE
-                binding.itemAccBtn.visibility = View.GONE
-            } else {
-                binding.itemResolvBtn.visibility = View.GONE
-                binding.itemCancelBtn.visibility = View.GONE
-                binding.itemAccBtn.visibility = View.VISIBLE
-            }
-
-
         }
     }
 
     interface IOnItemClick {
         fun onItemClick(data: AccidentDetail)
-        fun onAccBtnClick(data: AccidentDetail)
-        fun onResolvBtnClick(data: AccidentDetail)
-        fun onCancelBtnClick(data: AccidentDetail)
     }
 }

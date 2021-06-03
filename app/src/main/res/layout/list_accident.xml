@@ -39,5 +39,10 @@
         android:visibility="visible"
         app:SpinKit_Color="@color/teal_700" />
 
+    <include
+        android:id="@+id/empty_data"
+        layout="@layout/empty_data"
+        android:visibility="gone" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

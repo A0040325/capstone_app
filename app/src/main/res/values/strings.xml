@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Capstone</string>
+    <string name="app_name">JagaBersama</string>
     <string name="logo">Logo</string>
     <string name="username_e_mail">Username/e-mail</string>
     <string name="password">Password</string>
@@ -30,4 +30,5 @@
     <string name="selesai">Selesai</string>
     <string name="cancel">Cancel</string>
     <string name="notification_channel">Accident</string>
+    <string name="no_data">Tidak ada data</string>
 </resources>
