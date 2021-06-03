@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white">
 
     <TextView
         android:id="@+id/tv_welcome"
-        android:layout_width="201dp"
-        android:layout_height="110dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="36dp"
         android:fontFamily="@font/futura_hv_font"
+        android:text="@string/welcome_back"
         android:textColor="@color/black"
         android:textSize="46sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Welcome Back" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_username"
@@ -31,9 +29,9 @@
         android:background="@drawable/border"
         android:fontFamily="@font/futura_hv_font"
         android:hint="@string/username_e_mail"
-        android:textSize="14sp"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
         android:paddingStart="14dp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_welcome"
         tools:ignore="RtlSymmetry" />
@@ -48,48 +46,60 @@
         android:background="@drawable/border"
         android:fontFamily="@font/futura_hv_font"
         android:hint="@string/password"
+        android:inputType="textPassword"
         android:paddingStart="14sp"
         android:textSize="14sp"
-        android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_username"
         tools:ignore="RtlSymmetry" />
 
     <TextView
         android:id="@+id/tv_signin"
-        android:layout_width="196dp"
-        android:layout_height="37dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="48dp"
         android:fontFamily="@font/futura_hv_font"
+        android:text="@string/sign_in"
         android:textColor="@color/black"
         android:textSize="32sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_password"
-        tools:text="Sign In" />
+        app:layout_constraintTop_toBottomOf="@+id/et_password" />
 
     <Button
         android:id="@+id/btn_signin"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_marginStart="88dp"
         android:layout_marginTop="36dp"
+        android:layout_marginEnd="30dp"
         android:background="@mipmap/foward_round"
-        app:layout_constraintStart_toEndOf="@+id/tv_signin"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_password" />
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/spinKit"
+        style="@style/SpinKitView.FadingCircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:SpinKit_Color="@color/teal_700"
+        app:layout_constraintBottom_toTopOf="@id/btn_signup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_signin" />
 
     <Button
         android:id="@+id/btn_signup"
-        android:layout_width="120dp"
-        android:layout_height="28dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="196dp"
-        android:background="#null"
+        android:layout_marginBottom="30dp"
+        android:background="@color/transparent"
         android:fontFamily="@font/futura_hv_font"
+        android:text="@string/sign_up"
         android:textStyle="normal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_signin"
-        tools:text="Sign Up" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

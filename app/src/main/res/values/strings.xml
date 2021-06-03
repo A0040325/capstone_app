@@ -10,4 +10,24 @@
     <string name="rewrite_password">Rewrite Password</string>
     <string name="school">School</string>
     <string name="parenting">Parenting</string>
+    <string name="pemukulan">Pemukulan</string>
+    <string name="image_violence">Image Violence</string>
+    <string name="terima">Terima</string>
+    <string name="tolak">Tolak</string>
+    <string name="refresh">Refresh</string>
+    <string name="location_icon">Location Icon</string>
+    <string name="alamat">Alamat</string>
+    <string name="no_telp">No Telp</string>
+    <string name="titik_koordinat">Titik Koordinat</string>
+    <string name="call">Call</string>
+    <string name="coordinate">%2$f , %2$f</string>
+    <string name="jaga_bersama">Jaga Bersama</string>
+    <string name="created_by_adhikana_waksa">Created by Adhikana Waksa</string>
+    <string name="welcome_back">Welcome\nBack</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="create_nyour_naccount">Create\nYour\nAccount</string>
+    <string name="selesai">Selesai</string>
+    <string name="cancel">Cancel</string>
+    <string name="notification_channel">Accident</string>
 </resources>
