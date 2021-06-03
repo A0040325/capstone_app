@@ -76,7 +76,7 @@ class AuthRepository @Inject constructor(
     }
 
     private fun notifSubscribe() {
-        FirebaseMessaging.getInstance().subscribeToTopic("violence")
+        FirebaseMessaging.getInstance().subscribeToTopic("violenceb21")
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     Log.d("HEHE", "Subscirbed")

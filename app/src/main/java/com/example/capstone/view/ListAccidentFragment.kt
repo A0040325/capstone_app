@@ -8,9 +8,11 @@ import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.capstone.ListAdapter
 import com.example.capstone.LoadingHelper
+import com.example.capstone.R
 import com.example.capstone.databinding.ListAccidentBinding
 import com.example.capstone.model.AccidentDetail
 import com.example.capstone.model.AccidentParcelable
@@ -30,6 +32,14 @@ class ListAccidentFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = ListAccidentBinding.inflate(inflater, container, false)
+
+        binding.listToolbar.setOnMenuItemClickListener { item ->
+            if (item.itemId == R.id.menu_history) {
+                findNavController().navigate(ListAccidentFragmentDirections.actionListAccidentFragmentToHistoryFragment())
+            }
+            false
+        }
+
         return binding.root
     }
 
